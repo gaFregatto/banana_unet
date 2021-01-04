@@ -1,1 +1,7 @@
+# cache files
 **/__pycache__
+# Folder used for tests on development
+test/
+logs/
+
+color_masks/
