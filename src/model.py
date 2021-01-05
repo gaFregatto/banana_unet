@@ -114,7 +114,7 @@ def unet_test(input_shape, pretrained_weights=None):
     outputs = Conv2D(1, (1, 1), activation='sigmoid')(c9)
     
     model = Model(inputs=[inputs], outputs=[outputs], name="unet_test")
-    model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+    model.compile(optimizer='Adam', loss='binary_crossentropy', metrics=['accuracy'])
     model.summary()
 
     if pretrained_weights:

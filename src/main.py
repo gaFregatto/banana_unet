@@ -5,7 +5,7 @@ import tensorflow as tf
 def main():
 
     # Data augmentation
-    data_gen_args = dict(rotation_range=45,
+    train_gen_args = dict(rotation_range=45,
                     width_shift_range=0.05,
                     height_shift_range=0.05,
                     shear_range=0.05,
@@ -13,8 +13,8 @@ def main():
                     horizontal_flip=True,
                     vertical_flip=True,
                     fill_mode='nearest')
-    trainGene = trainGenerator(2, '../', 'dataset', 'masks', 
-                            data_gen_args, save_to_dir=None, save_format=None)
+    trainGene = data_augmentation(2, '../', 'dataset', 'masks', 
+                            train_gen_args, save_to_dir=None, save_format=None)
     
     # U-net architecture
     # model = unet_paper((IMG_WIDTH, IMG_HEIGHT, IMG_CHANNLES))
@@ -27,13 +27,16 @@ def main():
                 checkpointer]
     
     # Training
-    model.fit(trainGene, epochs=5, steps_per_epoch=700, callbacks=callbacks)
+    model.fit(trainGene, epochs=2, steps_per_epoch=200, callbacks=callbacks)
+
+    # Save model 
+    model.save('../saved_models/first.h5')
 
     
 if __name__ == '__main__':
     # resize_images('../dataset', IMG_WIDTH, IMG_HEIGHT)
     # resize_images('../masks', IMG_WIDTH, IMG_HEIGHT)
-    generate_masks()
-    # main()
+    # generate_masks()
+    main()
     
 

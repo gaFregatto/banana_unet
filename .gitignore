@@ -1,7 +1,5 @@
-# cache files
 **/__pycache__
-# Folder used for tests on development
-test/
+backup/
 logs/
-
+saved_models/
 color_masks/
