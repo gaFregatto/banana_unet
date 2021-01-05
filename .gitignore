@@ -3,3 +3,4 @@ backup/
 logs/
 saved_models/
 color_masks/
+checkpoints/
