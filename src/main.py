@@ -1,9 +1,7 @@
 from model import * 
 from utils import *
-import tensorflow as tf
 
 def main():
-
     # Data augmentation
     train_gen_args = dict(rotation_range=30,
                     width_shift_range=0.05,
@@ -30,31 +28,30 @@ def main():
                             val_gen_args, save_to_dir=None, save_format=None)
 
     # U-net architecture
-    # model = unet_paper((IMG_WIDTH, IMG_HEIGHT, IMG_CHANNLES))
-    model = unet_test((IMG_WIDTH, IMG_HEIGHT, IMG_CHANNLES))
+    # model = unet_paper((IMG_WIDTH, IMG_HEIGHT, IMG_CHANNELS))
+    model = unet_test((IMG_WIDTH, IMG_HEIGHT, IMG_CHANNELS))
     
     # Modelcheckpoint
-    checkpointer = ModelCheckpoint('../checkpoints/128x128x3_test_ep900_step_1000_vstep_300.h5', verbose=1, save_best_only=True)
+    checkpointer = ModelCheckpoint(os.path.join('../checkpoints', FILE), verbose=1, save_best_only=True)
     callbacks = [EarlyStopping(patience=8, monitor='val_loss'),
                 TensorBoard(log_dir='../logs'),
                 checkpointer]
     
     # Training
-    model.fit(trainGene, epochs=900,
-                         steps_per_epoch=1000,
+    model.fit(trainGene, epochs=EP,
+                         steps_per_epoch=STEP,
                          validation_data=valGene,
-                         validation_steps=300, 
+                         validation_steps=VSTEP, 
                          callbacks=callbacks)
 
-    # Save model and renaming
-    model.save('../saved_models/128x128x3_unet_test_ep900_step_1000_vstep_300.h5')
-    # rename_all('../saved_models/', '.h5')
-    # rename_all('../checkpoints/', '.h5')
+    # Save model 
+    model.save(os.path.join('../saved_models', FILE))
 
     
 if __name__ == '__main__':
     # resize_images('../dataset', IMG_WIDTH, IMG_HEIGHT)
     # generate_masks()
     main()
+
     
 

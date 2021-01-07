@@ -5,9 +5,15 @@ import cv2 as cv
 import json 
 import os
 
-IMG_HEIGHT = 128
-IMG_WIDTH = 128
-IMG_CHANNLES = 3
+IMG_HEIGHT = 256
+IMG_WIDTH = 256
+IMG_CHANNELS = 1
+
+EP = 100
+STEP = 2000 
+VSTEP = 1000
+
+FILE = f"test_{IMG_WIDTH}x{IMG_HEIGHT}x{IMG_CHANNELS}_ep{EP}_step{STEP}_vstep{VSTEP}.h5"
 
 COLORS = [[43, 43, 200], [43, 75, 200], [43, 106, 200], [43, 137, 200], [43, 169, 200], [43, 200, 195], [43, 200, 163], 
             [43, 200, 132], [43, 200, 101], [43, 200, 69], [54, 200, 43], [85, 200, 43], [116, 200, 43], [148, 200, 43], 
