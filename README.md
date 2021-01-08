@@ -10,6 +10,6 @@
 - CUDA 11.0
 - cudNN 8.0.5
 
-### Para executar:
+### Para executar
 Execute o arquivo main.py presente na pasta src com o ambiente virtual ativado.
-```./banana_unet/src$ python main.py```
+- ```./banana_unet/src$ python main.py```
