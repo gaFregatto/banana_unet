@@ -1,6 +1,10 @@
 **/__pycache__
 backup/
 logs/
+csv_logs/
 saved_models/
 color_masks/
 checkpoints/
+best_results_backup/
+plots/
+retrained_models/
